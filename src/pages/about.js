@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
+import Link from 'gatsby-link'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 const About = ({ data }) => (
   <article className="sheet">
+    <HelmetDatoCms seo={data.datoCmsAboutPage.seoMetaTags} />
     <h1>{data.datoCmsAboutPage.title}</h1>
     <p>{data.datoCmsAboutPage.subtitle}</p>
-    <img src={data.datoCmsAboutPage.photo.url} />
-    <div dangerouslySetInnerHTML={{ __html: data.datoCmsAboutPage.bio }} />
   </article>
-);
+)
+
+export default About
 
 export const query = graphql`
   query AboutQuery {
     datoCmsAboutPage {
       title
       subtitle
-      photo { url }
       bio
     }
   }
-`;
-
-export default About
+`
